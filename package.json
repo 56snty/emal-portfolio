@@ -6,31 +6,26 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.0",
-    "@react-three/postprocessing": "^3.0.4",
-    "@studio-freight/lenis": "^1.0.42",
-    "@types/three": "^0.181.0",
-    "framer-motion": "^12.23.24",
-    "gsap": "^3.13.0",
-    "maath": "^0.10.8",
-    "next": "16.0.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "sass": "^1.94.2",
-    "three": "^0.181.2"
+    "@react-three/drei": "latest",
+    "@react-three/fiber": "latest",
+    "@react-three/postprocessing": "latest",
+    "@studio-freight/react-lenis": "latest",
+    "framer-motion": "latest",
+    "gsap": "latest",
+    "maath": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sass": "latest",
+    "three": "latest"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "eslint": "8",
+    "eslint-config-next": "latest",
+    "postcss": "8",
+    "tailwindcss": "3"
   }
 }
