@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial, Float } from '@react-three/drei'
 import * as random from 'maath/random/dist/maath-random.esm'
-import { ReactLenis } from '@studio-freight/lenis/react'
+import { ReactLenis } from '@studio-freight/react-lenis'
 import { Syne, Manrope } from 'next/font/google'
 import { EffectComposer, Bloom, Noise } from '@react-three/postprocessing'
 
