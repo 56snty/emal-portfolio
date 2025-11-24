@@ -1,0 +1,97 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.6.0
+2 info using node@v24.9.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/56snty.github.io/emal-portfolio/.npmrc
+5 silly config load:file:/data/data/com.termux/files/home/.npmrc
+6 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+7 verbose title npm install @types/node
+8 verbose argv "install" "--save-exact" "--save-dev" "@types/node"
+9 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2025-11-23T14_36_48_667Z-
+10 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2025-11-23T14_36_48_667Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:5913968640 maxSize:1478492160 maxEntrySize:739246080
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly fetch manifest @types/node@*
+16 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+17 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 453ms (cache revalidated)
+18 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:10693501 disposed:false
+19 silly placeDep ROOT @types/node@24.10.1 OK for: emal-portfolio@0.1.0 want: *
+20 silly fetch manifest undici-types@~7.16.0
+21 silly packumentCache full:https://registry.npmjs.org/undici-types cache-miss
+22 http fetch GET 200 https://registry.npmjs.org/undici-types 161ms (cache revalidated)
+23 silly packumentCache full:https://registry.npmjs.org/undici-types set size:148959 disposed:false
+24 silly placeDep ROOT undici-types@7.16.0 OK for: @types/node@24.10.1 want: ~7.16.0
+25 silly fetch manifest eslint@>=9.0.0
+26 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+27 http cache https://registry.npmjs.org/eslint 11ms (cache hit)
+28 silly packumentCache full:https://registry.npmjs.org/eslint set size:1859273 disposed:false
+29 silly fetch manifest jiti@*
+30 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+31 http cache https://registry.npmjs.org/jiti 6ms (cache hit)
+32 silly packumentCache full:https://registry.npmjs.org/jiti set size:382310 disposed:false
+33 verbose stack Error: could not resolve
+33 verbose stack     at PlaceDep.failPeerConflict (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:503:25)
+33 verbose stack     at new PlaceDep (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:157:21)
+33 verbose stack     at #buildDepStep (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:933:18)
+33 verbose stack     at async Arborist.buildIdealTree (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:182:7)
+33 verbose stack     at async Promise.all (index 1)
+33 verbose stack     at async Arborist.reify (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:126:5)
+33 verbose stack     at async Install.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/commands/install.js:162:5)
+33 verbose stack     at async Npm.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:208:9)
+33 verbose stack     at async module.exports (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/cli/entry.js:60:5)
+34 error code ERESOLVE
+35 error ERESOLVE could not resolve
+36 error
+37 error While resolving: eslint-config-next@16.0.3
+37 error Found: eslint@8.57.1[2m[22m
+37 error [2mnode_modules/eslint[22m
+37 error   [95mpeer[39m eslint@"^6.0.0 || ^7.0.0 || >=8.0.0" from @eslint-community/eslint-utils@4.9.0[2m[22m
+37 error   [2mnode_modules/@eslint-community/eslint-utils[22m
+37 error     @eslint-community/eslint-utils@"^4.7.0" from @typescript-eslint/utils@8.47.0[2m[22m
+37 error     [2mnode_modules/@typescript-eslint/utils[22m
+37 error       @typescript-eslint/utils@"8.47.0" from @typescript-eslint/eslint-plugin@8.47.0[2m[22m
+37 error       [2mnode_modules/@typescript-eslint/eslint-plugin[22m
+37 error         @typescript-eslint/eslint-plugin@"8.47.0" from typescript-eslint@8.47.0[2m[22m
+37 error         [2mnode_modules/typescript-eslint[22m
+37 error       2 more (@typescript-eslint/type-utils, typescript-eslint)
+37 error     @eslint-community/eslint-utils@"^4.2.0" from eslint@8.57.1
+37 error   [95mpeer[39m eslint@"^8.57.0 || ^9.0.0" from @typescript-eslint/eslint-plugin@8.47.0[2m[22m
+37 error   [2mnode_modules/@typescript-eslint/eslint-plugin[22m
+37 error     @typescript-eslint/eslint-plugin@"8.47.0" from typescript-eslint@8.47.0[2m[22m
+37 error     [2mnode_modules/typescript-eslint[22m
+37 error       typescript-eslint@"^8.46.0" from eslint-config-next@16.0.3[2m[22m
+37 error       [2mnode_modules/eslint-config-next[22m
+37 error         [34mdev[39m eslint-config-next@"latest" from the root project
+37 error   10 more (@typescript-eslint/parser, ...)
+37 error
+37 error Could not resolve dependency:
+37 error [95mpeer[39m eslint@">=9.0.0" from eslint-config-next@16.0.3[2m[22m
+37 error [2mnode_modules/eslint-config-next[22m
+37 error   [34mdev[39m eslint-config-next@"latest" from the root project
+37 error
+37 error Conflicting peer dependency: eslint@9.39.1[2m[22m
+37 error [2mnode_modules/eslint[22m
+37 error   [95mpeer[39m eslint@">=9.0.0" from eslint-config-next@16.0.3[2m[22m
+37 error   [2mnode_modules/eslint-config-next[22m
+37 error     [34mdev[39m eslint-config-next@"latest" from the root project
+37 error
+37 error Fix the upstream dependency conflict, or retry
+37 error this command with --force or --legacy-peer-deps
+37 error to accept an incorrect (and potentially broken) dependency resolution.
+38 error
+38 error
+38 error For a full report see:
+38 error /data/data/com.termux/files/home/.npm/_logs/2025-11-23T14_36_48_667Z-eresolve-report.txt
+39 silly unfinished npm timer reify 1763908609013
+40 silly unfinished npm timer reify:loadTrees 1763908609014
+41 silly unfinished npm timer idealTree:buildDeps 1763908609222
+42 silly unfinished npm timer idealTree:node_modules/eslint-config-next 1763908610001
+43 verbose cwd /data/data/com.termux/files/home/56snty.github.io/emal-portfolio
+44 verbose os Linux 6.1.99-android14-11-30958380-abS928BXXS4BYEC
+45 verbose node v24.9.0
+46 verbose npm  v11.6.0
+47 verbose exit 1
+48 verbose code 1
+49 error A complete log of this run can be found in: /data/data/com.termux/files/home/.npm/_logs/2025-11-23T14_36_48_667Z-debug-0.log

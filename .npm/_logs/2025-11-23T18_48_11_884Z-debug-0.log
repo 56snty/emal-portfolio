@@ -1,0 +1,72 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.6.0
+2 info using node@v24.9.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/emal-portfolio/.npmrc
+5 silly config load:file:/data/data/com.termux/files/home/.npmrc
+6 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+7 verbose title npm install @studio-freight/react-lenis
+8 verbose argv "install" "@studio-freight/react-lenis"
+9 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2025-11-23T18_48_11_884Z-
+10 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2025-11-23T18_48_11_884Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:1174405120 maxSize:293601280 maxEntrySize:146800640
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly fetch manifest @studio-freight/react-lenis@*
+16 silly packumentCache full:https://registry.npmjs.org/@studio-freight%2freact-lenis cache-miss
+17 http fetch GET 200 https://registry.npmjs.org/@studio-freight%2freact-lenis 1602ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/@studio-freight%2freact-lenis set size:undefined disposed:false
+19 silly fetch manifest react-dom@19.2.0
+20 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/react-dom 138ms (cache revalidated)
+22 silly packumentCache full:https://registry.npmjs.org/react-dom set size:8240095 disposed:false
+23 silly fetch manifest react-dom@^17 || ^18
+24 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+25 http cache https://registry.npmjs.org/react-dom 19ms (cache hit)
+26 silly packumentCache full:https://registry.npmjs.org/react-dom set size:8240095 disposed:false
+27 silly fetch manifest react@19.2.0
+28 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/react 97ms (cache revalidated)
+30 silly packumentCache full:https://registry.npmjs.org/react set size:6283882 disposed:false
+31 verbose stack Error: unable to resolve dependency tree
+31 verbose stack     at #failPeerConflict (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1407:25)
+31 verbose stack     at #loadPeerSet (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1373:33)
+31 verbose stack     at async #buildDepStep (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:917:11)
+31 verbose stack     at async Arborist.buildIdealTree (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:182:7)
+31 verbose stack     at async Promise.all (index 1)
+31 verbose stack     at async Arborist.reify (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:126:5)
+31 verbose stack     at async Install.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/commands/install.js:162:5)
+31 verbose stack     at async Npm.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:208:9)
+31 verbose stack     at async module.exports (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/cli/entry.js:60:5)
+32 error code ERESOLVE
+33 error ERESOLVE unable to resolve dependency tree
+34 error
+35 error While resolving: emal-portfolio@0.1.0
+35 error Found: react-dom@19.2.0[2m[22m
+35 error [2mnode_modules/react-dom[22m
+35 error   react-dom@"19.2.0" from the root project
+35 error
+35 error Could not resolve dependency:
+35 error [95mpeer[39m react-dom@"^17 || ^18" from @studio-freight/react-lenis@0.0.47[2m[22m
+35 error [2mnode_modules/@studio-freight/react-lenis[22m
+35 error   @studio-freight/react-lenis@"*" from the root project
+35 error
+35 error Fix the upstream dependency conflict, or retry
+35 error this command with --force or --legacy-peer-deps
+35 error to accept an incorrect (and potentially broken) dependency resolution.
+36 error
+36 error
+36 error For a full report see:
+36 error /data/data/com.termux/files/home/.npm/_logs/2025-11-23T18_48_11_884Z-eresolve-report.txt
+37 silly unfinished npm timer reify 1763923692667
+38 silly unfinished npm timer reify:loadTrees 1763923692669
+39 silly unfinished npm timer idealTree:buildDeps 1763923692907
+40 silly unfinished npm timer idealTree:#root 1763923692908
+41 verbose cwd /data/data/com.termux/files/home/emal-portfolio
+42 verbose os Linux 6.1.99-android14-11-30958380-abS928BXXS4BYEC
+43 verbose node v24.9.0
+44 verbose npm  v11.6.0
+45 verbose exit 1
+46 verbose code 1
+47 error A complete log of this run can be found in: /data/data/com.termux/files/home/.npm/_logs/2025-11-23T18_48_11_884Z-debug-0.log

@@ -1,0 +1,2 @@
+# Nmap 7.98 scan initiated Sat Sep 27 01:04:10 2025 as: /data/data/com.termux/files/usr/bin/nmap -p 80,8080,1883,55443,9999,6454,5568 -T4 -oG /data/data/com.termux/files/home/tmp/light_scan.gnmap 192.168.2.1-254
+# Nmap done at Sat Sep 27 01:05:03 2025 -- 254 IP addresses (0 hosts up) scanned in 52.37 seconds

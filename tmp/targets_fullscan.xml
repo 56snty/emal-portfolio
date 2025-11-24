@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///data/data/com.termux/files/usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Sat Sep 27 00:46:06 2025 as: /data/data/com.termux/files/usr/bin/nmap -p- -sV -T4 -&#45;open -oA /data/data/com.termux/files/home/tmp/targets_fullscan 192.168.1.20 192.168.1.28 192.168.1.57 192.168.1.80 192.168.1.92 192.168.1.102 192.168.1.108 192.168.1.109 192.168.1.125 192.168.1.127 192.168.1.155 192.168.1.158 192.168.1.160 192.168.1.164 192.168.1.177 192.168.1.200 192.168.1.201 192.168.1.202 192.168.1.203 192.168.1.204 192.168.1.205 192.168.1.206 192.168.1.207 192.168.1.208 192.168.1.209 192.168.1.210 192.168.1.212 192.168.1.214 192.168.1.215 192.168.1.222 192.168.1.224 192.168.1.225 192.168.1.228 192.168.1.246 -->
+<nmaprun scanner="nmap" args="/data/data/com.termux/files/usr/bin/nmap -p- -sV -T4 -&#45;open -oA /data/data/com.termux/files/home/tmp/targets_fullscan 192.168.1.20 192.168.1.28 192.168.1.57 192.168.1.80 192.168.1.92 192.168.1.102 192.168.1.108 192.168.1.109 192.168.1.125 192.168.1.127 192.168.1.155 192.168.1.158 192.168.1.160 192.168.1.164 192.168.1.177 192.168.1.200 192.168.1.201 192.168.1.202 192.168.1.203 192.168.1.204 192.168.1.205 192.168.1.206 192.168.1.207 192.168.1.208 192.168.1.209 192.168.1.210 192.168.1.212 192.168.1.214 192.168.1.215 192.168.1.222 192.168.1.224 192.168.1.225 192.168.1.228 192.168.1.246" start="1758926766" startstr="Sat Sep 27 00:46:06 2025" version="7.98" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.109" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.80" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.164" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.125" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.177" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.57" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.202" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.28" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.203" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.205" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.102" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.204" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.210" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.209" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.158" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.208" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.207" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.92" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.160" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.201" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.206" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.246" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.200" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.225" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.228" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.127" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.155" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.212" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.224" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="192.168.1.108" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<taskprogress task="Connect Scan" time="1758926771" percent="1.50" remaining="132" etc="1758926902"/>
+<taskprogress task="Connect Scan" time="1758926775" percent="5.78" remaining="98" etc="1758926873"/>
+<taskprogress task="Connect Scan" time="1758926796" percent="26.05" remaining="77" etc="1758926873"/>
+<taskprogress task="Connect Scan" time="1758926817" percent="47.33" remaining="54" etc="1758926870"/>
+<taskprogress task="Connect Scan" time="1758926824" percent="53.89" remaining="48" etc="1758926871"/>
+<taskprogress task="Connect Scan" time="1758926887" percent="93.15" remaining="9" etc="1758926896"/>
+<taskprogress task="Connect Scan" time="1758926893" percent="93.66" remaining="9" etc="1758926901"/>
+<taskprogress task="Connect Scan" time="1758926894" percent="93.69" remaining="9" etc="1758926902"/>
+<taskprogress task="Connect Scan" time="1758926900" percent="93.87" remaining="9" etc="1758926909"/>
+<taskprogress task="Connect Scan" time="1758926912" percent="94.29" remaining="9" etc="1758926921"/>
+<taskprogress task="Connect Scan" time="1758926922" percent="94.67" remaining="9" etc="1758926931"/>
+<taskprogress task="Connect Scan" time="1758926940" percent="95.63" remaining="8" etc="1758926948"/>
+<taskprogress task="Connect Scan" time="1758926959" percent="96.39" remaining="8" etc="1758926966"/>
+<taskprogress task="Connect Scan" time="1758926960" percent="96.39" remaining="8" etc="1758926967"/>
+<taskprogress task="Connect Scan" time="1758926974" percent="96.75" remaining="7" etc="1758926981"/>
+<taskprogress task="Connect Scan" time="1758926975" percent="96.81" remaining="7" etc="1758926982"/>
+<taskprogress task="Connect Scan" time="1758926989" percent="97.40" remaining="6" etc="1758926995"/>
+<taskprogress task="Connect Scan" time="1758927000" percent="97.76" remaining="6" etc="1758927005"/>
+<taskprogress task="Connect Scan" time="1758927011" percent="98.31" remaining="5" etc="1758927015"/>
+<taskprogress task="Connect Scan" time="1758927025" percent="99.25" remaining="2" etc="1758927027"/>
+<taskprogress task="Connect Scan" time="1758927032" percent="99.63" remaining="1" etc="1758927033"/>
+<taskprogress task="Service scan" time="1758927041" percent="11.76" remaining="30" etc="1758927071"/>
+<taskprogress task="Service scan" time="1758927048" percent="17.65" remaining="52" etc="1758927099"/>
+<taskprogress task="Service scan" time="1758927061" percent="23.53" remaining="78" etc="1758927139"/>
+<taskprogress task="Service scan" time="1758927102" percent="35.29" remaining="120" etc="1758927221"/>
