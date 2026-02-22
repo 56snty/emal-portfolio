@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>THE_OBJECT // SYSTEM_RUNTIME</title>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; cursor: none; }
+        body { background:#000; color:#fff; font-family: "Space Mono", monospace; overflow:hidden; height: 500vh; }
+        canvas { position:fixed; inset:0; z-index:0; }
+        
+        #cursor { 
+            position: fixed; width: 12px; height: 12px; border: 1px solid #fff; 
+            border-radius: 50%; pointer-events: none; z-index: 1000; 
+            mix-blend-mode: difference; transition: transform 0.1s linear;
+        }
+
+        .ui-root { position:fixed; inset:0; display:grid; grid-template-rows:80px 1fr 80px; z-index: 10; pointer-events: none; padding: 30px; }
+        
+        .header, .footer { display:flex; justify-content:space-between; align-items:flex-start; mix-blend-mode: difference; }
+        
+        .label { font-size: 8px; opacity: 0.4; letter-spacing: 2px; margin-bottom: 4px; }
+        .data-val { font-size: 11px; letter-spacing: 1px; }
+
+        .workspace { display:flex; align-items:center; justify-content:center; }
+        h1 { font-size: 15vw; font-weight: 900; letter-spacing: -0.08em; mix-blend-mode: difference; line-height: 0.7; opacity: 0.9; }
+
+        .scanner { width: 100px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+        .scanner-bar { position: absolute; width: 30%; height: 100%; background: #fff; animation: scan 2s infinite ease-in-out; }
+        @keyframes scan { 0% { left: -30%; } 100% { left: 130%; } }
+
+        .linked-tag { color: #00ffcc; border: 1px solid #00ffcc; padding: 2px 8px; font-size: 9px; display: none; }
+    </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<canvas id="gl"></canvas>
+
+<div class="ui-root">
+    <div class="header">
+        <div>
+            <div class="label">OBJECT_CLASSIFICATION</div>
+            <div class="data-val">NEURAL_ENTITY_V.10</div>
+        </div>
+        <div id="linked-ui" class="linked-tag">GLOBAL_SYNC_ACTIVE</div>
+        <div style="text-align: right">
+            <div class="label">NODE_ID</div>
+            <div id="node-id" class="data-val">0x----</div>
+        </div>
+    </div>
+
+    <div class="workspace">
+        <h1 id="main-title">VOID</h1>
+    </div>
+
+    <div class="footer">
+        <div>
+            <div class="label">STABILITY_INDEX</div>
+            <div id="stability-val" class="data-val">100.00%</div>
+            <div class="scanner"><div class="scanner-bar"></div></div>
+        </div>
+        <div style="text-align: center">
+            <div class="label">MORPH_COORDS</div>
+            <div id="morph-val" class="data-val">0.0000</div>
+        </div>
+        <div style="text-align: right">
+            <div class="label">SYSTEM_UPTIME</div>
+            <div id="uptime" class="data-val">00:00:00</div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* ================= GLOBAL STATE (THE LINK) ================= */
+const bc = new BroadcastChannel('IGLOO_CLASS_SYNC');
+const myId = Math.random().toString(16).substr(2, 4).toUpperCase();
+document.getElementById('node-id').textContent = "0x" + myId;
+
+let state = { morph: 0, mx: 0, my: 0, lastUpdate: 0 };
+let localState = { morph: 0, mx: 0, my: 0 };
+let isMaster = false;
+
+bc.onmessage = (e) => {
+    if (!isMaster || (Date.now() - state.lastUpdate > 500)) {
+        state = e.data;
+        document.getElementById('linked-ui').style.display = 'block';
+    }
+};
+
+/* ================= WEBGL ENGINE (VOLUMETRIC) ================= */
+const canvas = document.getElementById("gl");
+const gl = canvas.getContext("webgl");
+
+function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = innerWidth * dpr;
+    canvas.height = innerHeight * dpr;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+}
+addEventListener("resize", resize);
+resize();
+
+const vs = `attribute vec2 p; void main(){gl_Position=vec4(p,0,1);}`;
+const fs = `
+precision highp float;
+uniform float t;
+uniform vec2 res;
+uniform float morph;
+uniform vec2 mouse;
+
+mat2 rot(float a) { return mat2(cos(a), -sin(a), sin(a), cos(a)); }
+
+// Volumetric Signed Distance Field
+float map(vec3 p) {
+    p.xy *= rot(t * 0.1 + morph * 1.5);
+    p.yz *= rot(t * 0.15);
+    
+    // Spatial mouse distortion
+    p.xy -= mouse * 0.5 * morph;
+    
+    vec3 q = p;
+    for(int i=0; i<4; i++) {
+        q = abs(q) - 0.6;
+        q.xy *= rot(0.4 + morph);
+        q *= 1.25;
+    }
+    
+    float shape = mix(length(p) - 1.5, length(max(abs(p) - 1.1, 0.0)) - 0.1, morph);
+    float internal = dot(sin(q), cos(q.yzx)) * 0.15;
+    return shape + internal;
+}
+
+void main() {
+    vec2 uv = (gl_FragCoord.xy - 0.5 * res.xy) / res.y;
+    vec3 col = vec3(0.0);
+    
+    // Chromatic Aberration & Refraction Raymarching
+    for(int i=0; i<3; i++) {
+        vec2 uv_s = uv + (float(i-1) * 0.015 * morph);
+        vec3 ro = vec3(0, 0, -4.5), rd = normalize(vec3(uv_s, 1.3));
+        float t_m = 0.0;
+        
+        for(int j=0; j<80; j++) {
+            float d = map(ro + rd * t_m);
+            if(d < 0.001 || t_m > 12.0) break;
+            t_m += d * 0.5;
+        }
+        
+        if(t_m < 12.0) {
+            vec3 p = ro + rd * t_m;
+            vec2 e = vec2(0.001, 0);
+            vec3 n = normalize(map(p)-vec3(map(p-e.xyy), map(p-e.yxy), map(p-e.yyx)));
+            
+            float diff = max(dot(n, normalize(vec3(1,1,-1))), 0.0);
+            float fres = pow(1.0 + dot(n, rd), 4.0);
+            
+            // Subsurface Scattering simulation
+            vec3 base = mix(vec3(0.02, 0.02, 0.05), vec3(0.8, 0.0, 0.1), morph);
+            float light = diff + fres;
+            
+            if(i==0) col.r = base.r * light + (fres * 0.5);
+            if(i==1) col.g = base.g * light + (fres * 0.5);
+            if(i==2) col.b = base.b * light + (fres * 0.5);
+        }
+    }
+    
+    // Atmospheric effects
+    col *= exp(-0.1 * length(uv * 5.0)); 
+    float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453) * 0.04;
+    gl_FragColor = vec4(col + grain, 1.0);
+}
+`;
+
+function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+}
+
+const prog = gl.createProgram();
+gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+gl.linkProgram(prog);
+gl.useProgram(prog);
+
+const buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+const pLoc = gl.getAttribLocation(prog, "p");
+gl.enableVertexAttribArray(pLoc);
+gl.vertexAttribPointer(pLoc, 2, gl.FLOAT, false, 0, 0);
+
+const uTime = gl.getUniformLocation(prog, "t"), uRes = gl.getUniformLocation(prog, "res"), uMorph = gl.getUniformLocation(prog, "morph"), uMouse = gl.getUniformLocation(prog, "mouse");
+
+/* ================= INTERACTION LOOP ================= */
+const cursor = document.getElementById('cursor');
+let lerpMorph = 0, lerpMX = 0, lerpMY = 0;
+
+addEventListener('mousemove', e => {
+    isMaster = true;
+    localState.mx = (e.clientX / innerWidth) * 2 - 1;
+    localState.my = -(e.clientY / innerHeight) * 2 + 1;
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    broadcast();
+});
+
+const lenis = new Lenis({ lerp: 0.05 });
+lenis.on('scroll', (e) => {
+    isMaster = true;
+    localState.morph = e.progress;
+    broadcast();
+});
+
+function broadcast() {
+    if(isMaster) {
+        bc.postMessage({ ...localState, lastUpdate: Date.now() });
+        state = { ...localState };
+    }
+}
+
+function render(time) {
+    // Neural Inertia Physics
+    lerpMorph += (state.morph - lerpMorph) * 0.08;
+    lerpMX += (state.mx - lerpMX) * 0.1;
+    lerpMY += (state.my - lerpMY) * 0.1;
+
+    document.getElementById('morph-val').textContent = lerpMorph.toFixed(4);
+    document.getElementById('stability-val').textContent = (100 - lerpMorph * 50).toFixed(2) + "%";
+    
+    const h = Math.floor(time/3600000), m = Math.floor((time%3600000)/60000), s = Math.floor((time%60000)/1000);
+    document.getElementById('uptime').textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+
+    gl.uniform1f(uTime, time * 0.001);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uMorph, lerpMorph);
+    gl.uniform2f(uMouse, lerpMX, lerpMY);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    lenis.raf(time);
+    requestAnimationFrame(render);
+}
+requestAnimationFrame(render);
+</script>
+</body>
+</html>
